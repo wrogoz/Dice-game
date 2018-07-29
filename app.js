@@ -15,7 +15,7 @@ init();
 
 // // create score list  
 // var scoreList=[];     <-----this is 2 times 6 rule --- canceled
-var endPoint;
+var endPoint=100;
 document.querySelector('#confirm').addEventListener('click', function(){
     endPoint = document.querySelector('#endPoint').value;
     init();
