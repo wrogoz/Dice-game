@@ -13,12 +13,12 @@ GAME RULES:
 var scores, roundScore,activePlayer,gamePlaying;
 init();
 
-// create score list
-var scoreList=[];
+// // create score list  
+// var scoreList=[];     <-----this is 2 times 6 rule --- canceled
 var endPoint;
 document.querySelector('#confirm').addEventListener('click', function(){
     endPoint = document.querySelector('#endPoint').value;
-    
+    init();
 });
 
 
@@ -27,28 +27,32 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 if(gamePlaying){
         // 1. random number
         var dice = Math.floor(Math.random() * 6 + 1);
-    
+        var dice2 = Math.floor(Math.random() * 6 + 1);
+    console.log(dice+' '+dice2);
         // 2. display the result
-        var diceDOM = document.querySelector('.dice');
+        var diceDOM = document.querySelector('#dice');
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice+'.png'; 
 
+        var diceDOM2 = document.querySelector('#dice2');
+    diceDOM2.style.display = 'block';
+    diceDOM2.src = 'dice-' + dice2 + '.png'; 
         // 3. update round scoure if the roll num !=1
-        if(dice!==1){
+        if(dice!==1 && dice2!==1){
             //add score
-            roundScore += dice;
+            roundScore += dice+dice2;
             document.querySelector('#current-'+activePlayer).textContent = roundScore;
             // ---->add dice to scoreList
-            scoreList.push(dice);
-            console.log(scoreList);
+          //  scoreList.push(dice);     <-----this is 2 times 6 rule --- canceled
+          
            
-            // ---> is it the same result as last one?
-           if(scoreList[scoreList.length - 1] == scoreList[scoreList.length - 2] && scoreList[scoreList.length - 2]===6){
+            // ---> is it the same result as last one?                   <-----this is 2 times 6 rule --- canceled!!!!!!!!!!!!!
+        //    if(scoreList[scoreList.length - 1] == scoreList[scoreList.length - 2] && scoreList[scoreList.length - 2]===6){
               
-                document.querySelector('#score-' + activePlayer).textContent=0;
-                nextPlayer();
+        //         document.querySelector('#score-' + activePlayer).textContent=0;
+        //         nextPlayer();
                
-           }
+        //    }
         }
         else{
             nextPlayer();
@@ -66,7 +70,8 @@ document.querySelector('.btn-hold').addEventListener('click' , function(){
     //check if player won the game
         if(scores[activePlayer]>=endPoint){
             document.querySelector('#name-'+ activePlayer).textContent = 'Winner!';
-            document.querySelector('.dice').display='none';
+            document.querySelector('#dice').display='none';
+            document.querySelector('#dice2').display='none';
             document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');
             document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
             gamePlaying=false;
@@ -102,7 +107,8 @@ function init(){
     activePlayer = 0;
     roundScore = 0;
     gamePlaying=true;
-    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('#dice').style.display = 'none';
+    document.querySelector('#dice2').style.display = 'none';
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
@@ -115,3 +121,8 @@ function init(){
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
 };
+
+function diceView(varName){
+    varName.style.display = 'block';
+    varName.src = 'dice-' + dice2 + '.png'; 
+}

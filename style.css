@@ -31,9 +31,11 @@ label{
     margin-left: 20%;
 }
 input{
+    display: inline-block;
     width: 120px;
     margin-left: 21%;
     text-align: center;
+    
 }
 .wrapper {
     width: 1000px;
@@ -150,9 +152,17 @@ i {
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
 
-.dice {
+#dice {
     position: absolute;
-    left: 50%;
+    left: 58%;
+    top: 178px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+#dice2{
+     position: absolute;
+    left: 42%;
     top: 178px;
     transform: translateX(-50%);
     height: 100px;
@@ -165,11 +175,14 @@ i {
     position: absolute;
     font-family: Lato;
     font-size: 20px;
-    width: 15%;
-    margin-left: 43%;
+    width: 32%;
+    margin-left: 32%;
     margin-top: 52%;
 }
 .destination label{
     display:block;
     
+}
+#confirm{
+    margin-left: 0%;
 }
